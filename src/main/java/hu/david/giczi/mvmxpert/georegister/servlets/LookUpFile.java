@@ -151,9 +151,9 @@ public class LookUpFile extends HttpServlet {
 		};
 
 		if (isDirectrory) {
-			jf.setDialogTitle("Mappa kiválasztás");
+			jf.setDialogTitle("Folder chooser");
 		} else {
-			jf.setDialogTitle("Fájl kiválasztás");
+			jf.setDialogTitle("File chooser");
 		}
 
 		jf.setApproveButtonText("Ok");
