@@ -32,7 +32,6 @@ public class SaveGeoRegistrationsByYear extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		
 		if(!nonExisted) {
 			response.sendRedirect("initGeoRegSave");
 			return;

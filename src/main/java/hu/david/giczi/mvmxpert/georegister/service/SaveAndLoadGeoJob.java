@@ -128,23 +128,23 @@ public class SaveAndLoadGeoJob {
 			protected JDialog createDialog(Component parent) throws HeadlessException {
 
 				JDialog dialog = super.createDialog(parent);
-
+				
 				dialog.setAlwaysOnTop(true);
 
 				return dialog;
 			}
 		};
-
-		jFileChooser.setDialogTitle("Fájl mentés/beolvasás");
+		
+		jFileChooser.setDialogTitle("File open/close");
 
 		if (readOrWrite)
-			jFileChooser.setApproveButtonText("Mentés");
+			jFileChooser.setApproveButtonText("Save");
 		else
-			jFileChooser.setApproveButtonText("Beolvasás");
+			jFileChooser.setApproveButtonText("Load");
 
 		jFileChooser.setAcceptAllFileFilterUsed(false);
 
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt fájl", "txt");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt file", "txt");
 
 		jFileChooser.addChoosableFileFilter(filter);
 
