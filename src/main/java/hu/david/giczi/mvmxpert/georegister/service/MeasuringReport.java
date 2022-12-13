@@ -3,11 +3,12 @@ package hu.david.giczi.mvmxpert.georegister.service;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,12 +16,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 
 public class MeasuringReport {
 
-	private final List<String> measData;
+	private List<String> measData;
 
 	public MeasuringReport(String path) {
 
@@ -34,9 +34,17 @@ public class MeasuringReport {
 
 	private void loadData(String path) {
 
-		try (Stream<String> stream = Files.lines(Paths.get(path))) {
-
-			stream.forEach(row -> measData.add(row));
+		File measFile = new File(path);
+		
+		try(FileInputStream fis = new FileInputStream(measFile);
+			       InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+			       BufferedReader reader = new BufferedReader(isr))  {
+			
+			String data;
+		      while ((data = reader.readLine()) != null) {
+		          measData.add(data);
+		      }
+		
 
 		} catch (IOException e) {
 
@@ -47,7 +55,7 @@ public class MeasuringReport {
 
 	public int getNumberOfMeasuredPoint() {
 
-		if (!measData.isEmpty() && measData.get(0).endsWith("MagKül")) {
+		if (!measData.isEmpty()) {
 
 			return measData.size() - 1;
 		}
@@ -61,12 +69,8 @@ public class MeasuringReport {
 
 		if (!measData.isEmpty()) {
 
-			if (measData.get(0).endsWith("MagKül")) {
-				data = measData.get(1).split("\t");
-			} else {
-				data = measData.get(0).split("\t");
-			}
-
+			data = measData.get(1).split("\t");
+			
 			if (data.length > 0) {
 				return data[14];
 			}
@@ -141,16 +145,21 @@ public class MeasuringReport {
 
 		for (int i = 0; i < measData.size(); i++) {
 
-			if (!measData.get(i).endsWith("MagKül")) {
+			if ( i > 0 ) {
 
 				data = measData.get(i).split("\t");
-
+				
+			try {
 				coords.add(getXCoord(data));
 				coords.add(getYCoord(data));
 				coords.add(getZCoord(data));
-			}
+			} catch (NumberFormatException e) {
+				
+		}	
+				
+	}
 
-		}
+}
 
 		if (coords.size() > 3 && coords.size() % 3 == 0) {
 
