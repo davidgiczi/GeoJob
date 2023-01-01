@@ -225,8 +225,7 @@ public class MeasuringReport {
 
 	public static Boolean createCoordReport(String root, String jobNumber , String place, String method_date) {
 		
-		String path = root +"\\" + jobNumber + "\\" + place + "\\" + method_date + "\\projekt\\coords.txt";
-		
+		String path = root + jobNumber + "\\" + place + "\\" + method_date + "\\projekt\\coords.txt";
 		File file =new File (path); 
 
 		if (file.exists() && !new File(file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - 4) + "_kit.txt").exists()) {

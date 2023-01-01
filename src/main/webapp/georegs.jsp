@@ -189,9 +189,9 @@ th, td {
 
 var info = "${msg}";
 var text = ["A megadott adat nem szám.", "Nem megfelelő a megadott rekord értéke: 1 <= rekord érték <= " + info,
-			"Koordináta-jegyzék létrehozva.\n\n\"coords_kit.txt\" néven található a munka \"állományok\" nevű mappájában.",
+			"Koordináta-jegyzék létrehozva.\n\n\"coords_kit.txt\" néven található a munka \"projekt\" nevű mappájában.",
 			"Koordináta-jegyzék készítése sikertelen:\n\nLétezik \"coords_kit.txt\" fájl, " + 
-			"vagy nem található \"coords.txt\" fájl a munka \"állományok\" nevű mappájában."];
+			"vagy nem található \"coords.txt\" fájl a munka \"projekt\" nevű mappájában."];
 
 
 if(info === "notnumber"){

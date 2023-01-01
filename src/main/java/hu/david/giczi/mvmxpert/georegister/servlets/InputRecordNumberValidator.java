@@ -107,10 +107,9 @@ public class InputRecordNumberValidator extends HttpServlet {
 		
 		if("createcoord".equals(operation)) {
 			
-			String jobNumber = geoJob.getSettlementNameOfWork().replace(" ", "_");
+			String jobNumber = geoJob.getInvestorCompany().replace(" ", "_");
 			String place = geoJob.getPlaceOfWork().replace(" ", "_");
-			String method_date = geoJob.getPlaceOfWork().replace(" ", "_") + 
-					"_" + geoJob.getMethod().replace(" ", "_") + "_"+geoJob.getDate();
+			String method_date = geoJob.getMethod().replace(" ", "_") + "_"+geoJob.getDate();
 			
 			if(MeasuringReport.createCoordReport(GeoJobPropertyStore.URL1, jobNumber, place, method_date)) {
 				
