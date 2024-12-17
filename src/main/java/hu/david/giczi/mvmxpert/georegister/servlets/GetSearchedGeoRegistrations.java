@@ -1,6 +1,7 @@
 package hu.david.giczi.mvmxpert.georegister.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +30,7 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String inputData = request.getParameter("search");
-	
+		
 		try {
 		
 			 if (inputData != null) {
@@ -51,9 +52,17 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 			Boolean notNumber = (Boolean) request.getSession().getAttribute("notNumber");
 			Integer sizeOfList = (Integer) request.getSession().getAttribute("size");
 			Boolean createCoord = (Boolean) request.getSession().getAttribute("createcoord");
-
-			List<GeoJob> geoJobStore = new GeoJobServiceImpl().search(inputData);
-
+			
+			String[] inputComponents = inputData.split("-");
+			if( inputComponents.length == 1 ) {
+				inputComponents = inputData.split("\\s+");
+			}
+			List<GeoJob> geoJobStore = new ArrayList<>();
+					
+			for (String inputTxt : inputComponents) {
+				geoJobStore.addAll(new GeoJobServiceImpl().search(inputTxt));
+			}		
+			
 			if (!geoJobStore.isEmpty()) {
 
 				if (notNumber != null) {
@@ -77,8 +86,9 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 				
 				for (GeoJob geoJob : geoJobStore) {
 					
-					new HighlightedGeoJob(geoJob, inputData).createHighlightedGeoJob();
-					
+					for (String searchedText : inputComponents) {
+						new HighlightedGeoJob(geoJob, searchedText).createHighlightedGeoJob();
+					}
 				}
 				
 				

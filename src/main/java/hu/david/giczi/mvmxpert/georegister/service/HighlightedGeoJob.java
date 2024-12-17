@@ -19,7 +19,6 @@ public class HighlightedGeoJob {
 	}
 
 	public HighlightedGeoJob(GeoJob containerGeoJob, String searchedExpression) {
-
 		this.containerGeoJob = containerGeoJob;
 		this.searchedExpression = searchedExpression;
 	}
@@ -86,13 +85,16 @@ public class HighlightedGeoJob {
 
 		for (int i = 0; i <= containerText.length() - searchedExpression.length(); i++) {
 
-			if (containerText.charAt(i) == searchedExpression.charAt(0)
-				|| containerText.charAt(i) == Character.toUpperCase(searchedExpression.charAt(0))
-				|| containerText.charAt(i) == Character.toLowerCase(searchedExpression.charAt(0))
-				&& containerText.substring(i, i + searchedExpression.length()).toLowerCase().equals(searchedExpression.toLowerCase()))
+			if ( containerText.substring(i, i + searchedExpression.length())
+				.toLowerCase().equals(searchedExpression.toLowerCase()) || 
+			
+				( containerText.substring(i, i + searchedExpression.length())
+					.toLowerCase().equals(searchedExpression.toLowerCase()) &&
+				containerText.substring(i, i + searchedExpression.length()).charAt(0) == 
+			Character.toUpperCase(searchedExpression.charAt(0))) ) 
 			{
 
-				beginIndexStore.add(i);
+			beginIndexStore.add(i);
 
 			}
 

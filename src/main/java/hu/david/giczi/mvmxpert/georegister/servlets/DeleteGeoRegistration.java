@@ -29,8 +29,10 @@ public class DeleteGeoRegistration extends HttpServlet {
 
 		String delRecordId = request.getParameter("geojobid");
 		
-		new GeoJobServiceImpl().remove(Long.valueOf(delRecordId));
-		
+		if( delRecordId != null ) {
+			new GeoJobServiceImpl().remove(Long.valueOf(delRecordId));
+		}
+	
 		request.getRequestDispatcher("clearSession").forward(request, response);
 	}
 
