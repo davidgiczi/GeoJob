@@ -36,7 +36,7 @@ public class TimeStamp {
 		
 		years.add(String.valueOf(currentYear));
 		
-		if(0<numberOfyears) {
+		if( 0 < numberOfyears ) {
 			
 			for (int i = currentYear-1; i > currentYear-numberOfyears; i--) {
 				
@@ -47,7 +47,7 @@ public class TimeStamp {
 			return years;
 		}
 		
-		else if (numberOfyears<0) {
+		else if ( numberOfyears < 0 ) {
 			
 			for (int i = currentYear+1; i <currentYear+numberOfyears; i++) {
 				

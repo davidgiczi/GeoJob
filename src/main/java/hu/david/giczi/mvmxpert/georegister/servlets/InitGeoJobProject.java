@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hu.david.giczi.mvmxpert.georegister.service.GeoJobPropertyStore;
+import hu.david.giczi.mvmxpert.georegister.service.Memento;
 
 
 @WebServlet("/InitGeoJobProject")
@@ -34,6 +35,14 @@ public class InitGeoJobProject extends HttpServlet {
 			
 			GeoJobPropertyStore.loadPropertiesFromFile();
 			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					new Memento();
+					
+				}
+			}).start();
 		}
 		else {
 			

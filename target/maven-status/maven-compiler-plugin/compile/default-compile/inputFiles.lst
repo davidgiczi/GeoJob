@@ -11,11 +11,14 @@ C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegis
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\AddGeoRegistration.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\AllOrYearGetGeoRegistrationRouter.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\Point.java
+C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\MementoDialog.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\InputDataValidator.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\AddProperties.java
+C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\Note.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\LookUpFile.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\AllOrYearOrSearchGetGeoRegistrationRouter.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\MeasuringReport.java
+C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\service\Memento.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\GetAllGeoRegistrations.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\DeleteGeoRegistration.java
 C:\Users\User\Documents\workspace-spring-tool-suite-4-4.10.0.RELEASE\GeoJobRegistry\src\main\java\hu\david\giczi\mvmxpert\georegister\servlets\InitGeoList.java

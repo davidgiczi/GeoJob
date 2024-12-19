@@ -241,9 +241,9 @@ public class GeoJobServiceImpl implements GeoJobService {
 	@Override
 	public String cutInputString(String input) {
 
-		if (input.length() > 255) {
+		if (input.length() > 4000) {
 
-			input = input.substring(0, 255);
+			input = input.substring(0, 4000);
 
 		}
 
