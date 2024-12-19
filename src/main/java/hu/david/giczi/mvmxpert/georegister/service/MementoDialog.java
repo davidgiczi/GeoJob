@@ -9,7 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -20,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
+
 
 public class MementoDialog {
 
@@ -52,8 +56,10 @@ public class MementoDialog {
 		for (Note note : noteList) {
 			addMementoPanel(note);
 		}
+		setIcon();
 		addInputDataPanel();
 		jFrame.setLocationRelativeTo(null);
+		jFrame.setAlwaysOnTop(true);
 		jFrame.setResizable(false);
 		jFrame.setVisible(true);
 	}
@@ -156,4 +162,11 @@ public class MementoDialog {
         JOptionPane.showMessageDialog(jFrame, "<html><h3>" + message + "</h3></html>", title, JOptionPane.INFORMATION_MESSAGE);
     }
 		
+	private void setIcon() {
+		try {
+			jFrame.setIconImage(ImageIO.read(new File("C:/Users/User/Documents/docs/MVMXPert/_DOCS_TEMPLATES/MVM.jpg")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
