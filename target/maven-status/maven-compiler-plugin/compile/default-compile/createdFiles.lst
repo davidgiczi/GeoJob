@@ -48,3 +48,4 @@ hu\david\giczi\mvmxpert\georegister\service\GeoJobServiceImpl$3.class
 hu\david\giczi\mvmxpert\georegister\servlets\AllOrYearOrSearchGetGeoRegistrationRouter.class
 hu\david\giczi\mvmxpert\georegister\service\Point.class
 hu\david\giczi\mvmxpert\georegister\servlets\GetSearchedGeoRegistrations.class
+hu\david\giczi\mvmxpert\georegister\service\MementoDialog$3.class

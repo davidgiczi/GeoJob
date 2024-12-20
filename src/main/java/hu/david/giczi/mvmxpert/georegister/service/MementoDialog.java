@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -33,7 +34,7 @@ public class MementoDialog {
 	private Color color = new Color(112, 128, 144);
 	private Font font = new Font("Arial", Font.BOLD, 14);
 	private JTextField delayInputField;
-	private int delayInSec;
+	private int delayInMin;
 	private Timer timer;
 	
 	public MementoDialog(List<Note> noteList, String title) {
@@ -43,7 +44,7 @@ public class MementoDialog {
 	}
 	
 	public void setDelayInSec(int delayInSec) {
-		this.delayInSec = delayInSec;
+		this.delayInMin = delayInSec;
 	}
 
 
@@ -122,13 +123,12 @@ public class MementoDialog {
 				else {
 					try {
 						int delayValue = Integer.parseInt(delayInputField.getText().trim());
-						if( 0 > delayValue ) {
+						if( 0 >= delayValue ) {
 							throw new NumberFormatException();
 						}
 						setDelayInSec(delayValue);
-						delayInputField.setText(instruction);
 						jFrame.setVisible(false);
-						long nextReminderTime = System.currentTimeMillis() + 1000 * 60 * delayInSec;
+						long nextReminderTime = System.currentTimeMillis() + 1000 * 60 * delayInMin;
 						timer = new Timer(1000 * 60, new ActionListener() {
 							
 							@Override
@@ -164,7 +164,14 @@ public class MementoDialog {
 		
 	private void setIcon() {
 		try {
-			jFrame.setIconImage(ImageIO.read(new File("C:/Users/User/Documents/docs/MVMXPert/_DOCS_TEMPLATES/MVM.jpg")));
+			File[] file = new File(GeoJobPropertyStore.URL4).listFiles(new FilenameFilter() {
+				
+				@Override
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".jpg") || name.endsWith(".png");
+				}
+			});
+			jFrame.setIconImage(ImageIO.read(file[0]));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
