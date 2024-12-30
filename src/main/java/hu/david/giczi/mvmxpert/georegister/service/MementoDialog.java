@@ -4,11 +4,12 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -52,8 +54,16 @@ public class MementoDialog {
 	private void createDialog(String title) {
 		jFrame = new JFrame(title);
 		jFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		jFrame.addWindowListener(new WindowAdapter() {
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				super.windowClosing(e);
+				jFrame.setVisible(false);
+			}
+		});
 		jFrame.setSize(650,  noteList.size() * 200);
-		jFrame.setLayout(new GridLayout(noteList.size() + 1, 1));
+		jFrame.setLayout(new BoxLayout(jFrame.getContentPane(), BoxLayout.Y_AXIS));
 		for (Note note : noteList) {
 			addMementoPanel(note);
 		}
@@ -80,7 +90,7 @@ public class MementoDialog {
 	
 	private void addInputDataPanel() {
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(650, 200));
+		panel.setPreferredSize(new Dimension(650, 100));
 		delayInputField.setPreferredSize(new Dimension(320, 30));
 		delayInputField.setHorizontalAlignment(JTextField.CENTER);
 		delayInputField.setFont(font);
