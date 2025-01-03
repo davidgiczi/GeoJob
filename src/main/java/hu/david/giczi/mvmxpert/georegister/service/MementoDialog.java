@@ -62,7 +62,7 @@ public class MementoDialog {
 				jFrame.setVisible(false);
 			}
 		});
-		jFrame.setSize(650,  noteList.size() * 200);
+		jFrame.setSize(650,  noteList.size() * 200 + 100);
 		jFrame.setLayout(new BoxLayout(jFrame.getContentPane(), BoxLayout.Y_AXIS));
 		for (Note note : noteList) {
 			addMementoPanel(note);
@@ -90,7 +90,7 @@ public class MementoDialog {
 	
 	private void addInputDataPanel() {
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(650, 120));
+		panel.setPreferredSize(new Dimension(650, 100));
 		delayInputField.setPreferredSize(new Dimension(320, 30));
 		delayInputField.setHorizontalAlignment(JTextField.CENTER);
 		delayInputField.setFont(font);
