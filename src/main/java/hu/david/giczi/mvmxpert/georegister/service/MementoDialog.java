@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.TitledBorder;
 
@@ -62,7 +63,7 @@ public class MementoDialog {
 				jFrame.setVisible(false);
 			}
 		});
-		jFrame.setSize(650,  noteList.size() * 200 + 100);
+		jFrame.setSize(650,  noteList.size() * 180);
 		jFrame.setLayout(new BoxLayout(jFrame.getContentPane(), BoxLayout.Y_AXIS));
 		for (Note note : noteList) {
 			addMementoPanel(note);
@@ -78,15 +79,19 @@ public class MementoDialog {
 	
 	private void addMementoPanel(Note note) {
 	JPanel panel = new JPanel();
-	panel.setPreferredSize(new Dimension(650, 200));
+	panel.setPreferredSize(new Dimension(600, note.getContentList().size() * 30));
 	panel.setBackground(Color.WHITE);
 	panel.setBorder(BorderFactory
 			.createTitledBorder(BorderFactory.createEtchedBorder(),
 					Memento.getRemainingDayValues().get(noteList.indexOf(note)), TitledBorder.LEFT, TitledBorder.TOP, font, color));
-	JLabel noteLabel = new JLabel("<html>" + note.getContent() + "</html>");
-	panel.add(noteLabel);
-	jFrame.add(panel);
+	
+	for (String content : note.getContentList()) {
+		JLabel contentLabel = new JLabel("<html>" + content + "</html>", SwingConstants.CENTER);
+		contentLabel.setPreferredSize(new Dimension(600, 30));
+		panel.add(contentLabel);
 	}
+	jFrame.add(panel);
+}
 	
 	private void addInputDataPanel() {
 		JPanel panel = new JPanel();
@@ -186,4 +191,5 @@ public class MementoDialog {
 			e.printStackTrace();
 		}
 	}
+	
 }

@@ -1,11 +1,14 @@
 package hu.david.giczi.mvmxpert.georegister.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Note {
 
 	
 	private String id;
 	private String color;
-	private String content;
+	private List<String> contentList;
 	
 	
 	public String getId() {
@@ -16,10 +19,10 @@ public class Note {
 		return color;
 	}
 	
-	public String getContent() {
-		return content;
+	public List<String> getContentList() {
+		return contentList;
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -29,19 +32,19 @@ public class Note {
 	}
 
 	public void setContent(String content) {
-		StringBuilder sb = new StringBuilder();
+		this.contentList = new ArrayList<>();
 		String contentSytle = "style=color:";
 		if( !content.contains("<") && !content.contains(">") ) {
-			this.content = content;
+			contentList.add(content);
 			return;
 		}
 		else if( content.startsWith("<b") && content.contains(contentSytle) ) {
-			this.content = content;
+			contentList.add(content);
 			return;
 		}
 		else if( content.startsWith("<b") && !content.contains(contentSytle) ) {
 			String[] parts = content.split("<b>|</b>");
-			this.content = "<b " + contentSytle + color + ">" + parts[1] + "</b>";
+			contentList.add("<b " + contentSytle + color + ">" + parts[1] + "</b>");
 			return;
 		}
 		String[] contentParts = content.split("</p>|</h[1-6]>");
@@ -56,50 +59,49 @@ public class Note {
                     preTag = part.substring(4, 6) + " " + contentSytle + color + ">";
                     String[] info = part.split("<p>|<h[1-6]>");
                     postTag =  "</" + part.substring(5, 7);
-                    sb.append(preTag + info[1] + postTag);
+                    contentList.add(preTag + info[1] + postTag);
                 }
                 else if( !Character.isDigit(part.charAt(6)) && part.contains(contentSytle) ){
-                	sb.append(part + "</" + part.charAt(5) + ">");
+                	contentList.add(part + "</" + part.charAt(5) + ">");
                 }
                 else if( Character.isDigit(part.charAt(6)) && part.contains(contentSytle) ){
-                	sb.append(part + "</" + part.substring(5,7) + ">");
+                	contentList.add(part + "</" + part.substring(5,7) + ">");
                 }
                 else if( Character.isDigit(part.charAt(6)) && !part.contains(contentSytle) ){
                     preTag = part.substring(4, 7) + " " + contentSytle + color + ">";
                     String[] info = part.split("<p>|<h[1-6]>");
                     postTag = "</" + part.substring(5, 7) + ">";
-                    sb.append(preTag + info[1] + postTag);
+                    contentList.add(preTag + info[1] + postTag);
                 }
 				
 			}
 			else {
 				
 				if( Character.isDigit(part.charAt(2)) && part.contains(contentSytle) ){
-					sb.append(part + "</" + part.substring(1,3) + ">");
+					contentList.add(part + "</" + part.substring(1,3) + ">");
                 }
                 else if( Character.isDigit(part.charAt(2)) && !part.contains(contentSytle) ){
                     preTag = part.substring(0, 3) + " " + contentSytle + color + ">";
                     String[] info = part.split("<p>|<h[1-6]>");
                     postTag = "</" + part.substring(1, 3) + ">";
-                    sb.append(preTag + info[1] + postTag);
+                    contentList.add(preTag + info[1] + postTag);
                 }
                 else if( !Character.isDigit(part.charAt(2)) && !part.contains(contentSytle) ){
                     preTag = part.substring(0, 2) + " " + contentSytle + color + ">";
                     String[] info = part.split("<p>|<h[1-6]>");
                     postTag =  "</" + part.substring(1, 3);
-                    sb.append(preTag + info[1] + postTag);
+                    contentList.add(preTag + info[1] + postTag);
                 }
                 else if( !Character.isDigit(part.charAt(2)) && part.contains(contentSytle) ){
-                	sb.append(part + "</" + part.charAt(1) + ">");
+                	contentList.add(part + "</" + part.charAt(1) + ">");
                 }			
 			}
 		}
-		this.content = sb.toString();
 	}
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", color=" + color + ", content=" + content + "]";
+		return "Note [id=" + id + ", color=" + color + ", content=" + contentList + "]";
 	}
 	
 }
