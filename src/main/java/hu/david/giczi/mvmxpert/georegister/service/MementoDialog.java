@@ -83,7 +83,7 @@ public class MementoDialog {
 	}
 	private void addMementoPanel(Note note) {
 	JPanel panel =  new JPanel();
-	panel.setPreferredSize(new Dimension(600, note.getContentList().size() * 30));
+	panel.setPreferredSize(new Dimension(650, note.getContentList().size() * 30));
 	panel.setBackground(Color.WHITE);
 	panel.setBorder(BorderFactory
 			.createTitledBorder(BorderFactory.createEtchedBorder(),
@@ -99,7 +99,7 @@ public class MementoDialog {
 	
 	private void addInputDataPanel() {
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(650, 50));
+		panel.setPreferredSize(new Dimension(650, 10));
 		delayInputField.setPreferredSize(new Dimension(320, 30));
 		delayInputField.setHorizontalAlignment(JTextField.CENTER);
 		delayInputField.setFont(font);
@@ -195,5 +195,5 @@ public class MementoDialog {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
