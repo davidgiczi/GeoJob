@@ -63,7 +63,7 @@ public class MementoDialog {
 				jFrame.setVisible(false);
 			}
 		});
-		jFrame.setSize(650,  getMementoContentNumberValue() * 70);
+		jFrame.setSize(650,  150 + getMementoContentNumberValue() * 100);
 		jFrame.setLayout(new BoxLayout(jFrame.getContentPane(), BoxLayout.Y_AXIS));
 		for (Note note : noteList) {
 			addMementoPanel(note);
@@ -194,6 +194,10 @@ public class MementoDialog {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		GeoJobPropertyStore.loadPropertiesFromFile();
+		new Memento();
 	}
 
 }
