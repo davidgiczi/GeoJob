@@ -40,7 +40,7 @@ public class AddGeoRegistration extends HttpServlet {
 				geoService.cutInputString(regParams.get("investor")[0]), geoService.cutInputString(regParams.get("comment")[0]),
 				isReady);
 
-		if (InputDataValidator.isValidInputGeoRegistration(geo)) {
+		if (InputDataValidator.isValidInputGeoRegistration(geo)) { 
 			
 			geoService.addGeoReg(geo);
 			

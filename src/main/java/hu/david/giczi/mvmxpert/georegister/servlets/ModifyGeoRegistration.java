@@ -33,7 +33,14 @@ public class ModifyGeoRegistration extends HttpServlet {
 		Map<String, String[]> regParams = request.getParameterMap();
 		
 		Boolean isReady = regParams.get("ready") == null ? false : true;
-		Long geoJobId = Long.parseLong(regParams.get("geojobid")[0]);
+		Long geoJobId;
+		try {
+			geoJobId = Long.parseLong(regParams.get("geojobid")[0]);	
+		}
+		catch (Exception e) {
+			request.getRequestDispatcher("clearSession").forward(request, response);
+			return;
+		}
 		GeoJobServiceImpl service =	new GeoJobServiceImpl();
 		
 		GeoRegistration modifiedGeoReg = new GeoRegistration(
