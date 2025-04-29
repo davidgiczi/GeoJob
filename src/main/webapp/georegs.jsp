@@ -187,6 +187,11 @@ th, td {
 
 <script charset="UTF-8">
 
+window.scrollTo({
+	  top: document.body.scrollHeight,
+	  behavior: 'smooth'
+	});
+
 var info = "${msg}";
 var text = ["A megadott adat nem szám.", "Nem megfelelő a megadott rekord értéke: 1 <= rekord érték <= " + info,
 			"Koordináta-jegyzék létrehozva.\n\n\"coords_kit.txt\" néven található a munka \"projekt\" nevű mappájában.",
