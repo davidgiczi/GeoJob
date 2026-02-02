@@ -50,10 +50,10 @@ public class InitGeoRegSave extends HttpServlet {
 			}
 
 			request.setAttribute("years", TimeStamp.getYears(5));
-			request.getRequestDispatcher("geosave.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geosave.jsp").forward(request, response);
 		} catch (IllegalStateException e) {
 
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 
 		}
 	}

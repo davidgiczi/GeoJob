@@ -48,10 +48,10 @@ public class AllOrYearOrSearchGetGeoRegistrationRouter extends HttpServlet {
 			}
 			else if(setup != null && from == null && searching == null) {
 				
-				request.getRequestDispatcher("geosetup.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/geosetup.jsp").forward(request, response);
 			}
 			else {
-				request.getRequestDispatcher("geostart.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 			}
 				
 				

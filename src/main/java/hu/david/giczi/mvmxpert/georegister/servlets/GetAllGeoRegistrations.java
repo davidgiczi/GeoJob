@@ -54,7 +54,7 @@ public class GetAllGeoRegistrations extends HttpServlet {
 				
 			
 			request.setAttribute("geoJobs", geoJobStore);
-			request.getRequestDispatcher("georegs.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/georegs.jsp").forward(request, response);
 		}
 		else {
 			
@@ -70,7 +70,7 @@ public class GetAllGeoRegistrations extends HttpServlet {
 		
 	}
 			
-	}
+}
 	
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

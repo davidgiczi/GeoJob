@@ -54,7 +54,7 @@ public class GetYearGeoRegistrations extends HttpServlet {
 				}
 				
 				request.setAttribute("geoJobs", geoJobStore);
-				request.getRequestDispatcher("georegs.jsp").forward(request, response);	
+				request.getRequestDispatcher("/WEB-INF/georegs.jsp").forward(request, response);	
 			}
 			else {
 				
@@ -66,7 +66,7 @@ public class GetYearGeoRegistrations extends HttpServlet {
 		}
 		catch (IllegalStateException e) {
 			
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 			
 		}	
 		

@@ -34,7 +34,7 @@ public class InitGeoJobProject extends HttpServlet {
 		if(propFolder.exists()) {
 			
 			GeoJobPropertyStore.loadPropertiesFromFile();
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 			new Thread(new Runnable() {
 				
 				@Override
@@ -49,7 +49,7 @@ public class InitGeoJobProject extends HttpServlet {
 			request.setAttribute("msg", "setup");
 			request.setAttribute("init", true);
 			request.getSession().setAttribute("initprocess", true);
-			request.getRequestDispatcher("geosetup.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geosetup.jsp").forward(request, response);
 		}
 			
 	}

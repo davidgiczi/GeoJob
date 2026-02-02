@@ -53,12 +53,12 @@ public class InitGeoList extends HttpServlet {
 			}
 				
 				
-			request.getRequestDispatcher("geolist.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geolist.jsp").forward(request, response);
 			request.getSession().invalidate();
 
 		} catch (IllegalStateException e) {
 
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 
 		}
 

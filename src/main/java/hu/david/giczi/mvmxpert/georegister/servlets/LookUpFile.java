@@ -123,7 +123,7 @@ public class LookUpFile extends HttpServlet {
 				request.setAttribute("init", true);
 			}
 
-			request.getRequestDispatcher("geosetup.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geosetup.jsp").forward(request, response);
 
 		} else {
 			request.getRequestDispatcher("showmail").forward(request, response);

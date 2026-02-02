@@ -21,6 +21,7 @@ public class GeoJob implements Serializable, Comparable<GeoJob> {
 	private String measPointNumber;
 	private String measDist;
 	private Boolean isReady;
+	private String searchedText;
 	
 	public GeoJob() {
 		
@@ -161,6 +162,13 @@ public class GeoJob implements Serializable, Comparable<GeoJob> {
 		this.isReady = isReady;
 	}
 
+	public String getSearchedText() {
+		return searchedText;
+	}
+
+	public void setSearchedText(String searchedText) {
+		this.searchedText = searchedText;
+	}
 
 	@Override
 	public int compareTo(GeoJob o) {

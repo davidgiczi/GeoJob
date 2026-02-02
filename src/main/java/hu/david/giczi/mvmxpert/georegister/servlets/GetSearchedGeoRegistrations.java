@@ -53,16 +53,18 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 			Integer sizeOfList = (Integer) request.getSession().getAttribute("size");
 			Boolean createCoord = (Boolean) request.getSession().getAttribute("createcoord");
 			
-			String[] inputComponents = inputData.split("-");
-			if( inputComponents.length == 1 ) {
-				inputComponents = inputData.split("\\s+");
-			}
-			List<GeoJob> geoJobStore = new ArrayList<>();
-					
-			for (String inputTxt : inputComponents) {
-				geoJobStore.addAll(new GeoJobServiceImpl().search(inputTxt));
-			}		
+			String[] inputComponents = inputData.split("#");
 			
+			List<GeoJob> geoJobStore = new ArrayList<>();
+			
+			for (String inputTxt : inputComponents) {
+				List<GeoJob> geoJobList = new GeoJobServiceImpl().search(inputTxt);
+				for (GeoJob geoJob : geoJobList) {
+					geoJob.setSearchedText(inputTxt);
+				}
+				geoJobStore.addAll(geoJobList);
+			}		
+					
 			if (!geoJobStore.isEmpty()) {
 
 				if (notNumber != null) {
@@ -85,15 +87,13 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 				}
 				
 				for (GeoJob geoJob : geoJobStore) {
+				new HighlightedGeoJob(geoJob, geoJob.getSearchedText()).createHighlightedGeoJob();
 					
-					for (String searchedText : inputComponents) {
-						new HighlightedGeoJob(geoJob, searchedText).createHighlightedGeoJob();
-					}
 				}
 				
 				
 				request.setAttribute("geoJobs", HighlightedGeoJob.highlightedGeoJobStore);
-				request.getRequestDispatcher("georegs.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/georegs.jsp").forward(request, response);
 			} 
 			else {
 				
@@ -104,7 +104,7 @@ public class GetSearchedGeoRegistrations extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 
 		}
 

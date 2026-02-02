@@ -85,7 +85,7 @@ public class OpenMonth extends HttpServlet {
 		}
 			
 		
-		request.getRequestDispatcher("geostart.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 		
 		
 	}

@@ -41,7 +41,7 @@ public class GoSetup extends HttpServlet {
 			request.setAttribute("url4", GeoJobPropertyStore.URL4);
 		}
 		
-		request.getRequestDispatcher("geosetup.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/geosetup.jsp").forward(request, response);
 	}
 
 	

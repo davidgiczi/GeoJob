@@ -53,7 +53,7 @@ public class InputRecordNumberValidator extends HttpServlet {
 			
 			if( requestInstruction == null && searchedData == null ) {
 				
-				request.getRequestDispatcher("geostart.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 				return;
 			}
 
@@ -74,7 +74,7 @@ public class InputRecordNumberValidator extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 
 		}
 
@@ -85,13 +85,13 @@ public class InputRecordNumberValidator extends HttpServlet {
 		switch (operation) {
 		
 		case "modify":
-			request.getRequestDispatcher("geojobmodify.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geojobmodify.jsp").forward(request, response);
 			break;
 		case "del":
-			request.getRequestDispatcher("geojobdel.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geojobdel.jsp").forward(request, response);
 			break;
 		case "createcoord":
-			request.getRequestDispatcher("postRouter").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/postRouter").forward(request, response);
 			break;
 		default:
 			break;

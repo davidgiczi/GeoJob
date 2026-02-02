@@ -38,7 +38,7 @@ public class AddProperties extends HttpServlet {
 				request.setAttribute("init", true);
 			}
 			
-			request.getRequestDispatcher("geosetup.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geosetup.jsp").forward(request, response);
 			return;
 		}
 		

@@ -33,4 +33,10 @@ form {
 			
 		
 </body>
+<script type="text/javascript">
+var invalid = "${invalid}";
+if( invalid === "true"){
+	alert("Hibás felhasználónév és/vagy jelszó!");
+}
+</script>
 </html>

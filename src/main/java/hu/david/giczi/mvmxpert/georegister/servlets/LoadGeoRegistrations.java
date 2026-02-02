@@ -108,7 +108,7 @@ public class LoadGeoRegistrations extends HttpServlet {
 						
 		} catch (IllegalStateException e) {
 
-			request.getRequestDispatcher("geostart.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/geostart.jsp").forward(request, response);
 
 		}
 		

@@ -1,7 +1,6 @@
 package hu.david.giczi.mvmxpert.georegister.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,8 +21,6 @@ public class Init extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter pw= response.getWriter();
-	
 		String username=request.getParameter("user");
 		String password=request.getParameter("pass");
 		
@@ -37,16 +34,14 @@ public class Init extends HttpServlet {
 			
 		}
 		else if("".equals(username) && "".equals(password)) {
-			RequestDispatcher req=request.getRequestDispatcher("index.jsp");
-    		pw.println("<h4 style=color:green>You have signed out successfully.</h4>");
+			request.setAttribute("invalid", false);
+			RequestDispatcher req=request.getRequestDispatcher("/index.jsp");
     		req.include(request, response);
 		}
 		else {
-			
-			RequestDispatcher req=request.getRequestDispatcher("index.jsp");
-    		pw.println("<h4 style=color:red>Invalid username and/or password, please try again!</h4>");
+			request.setAttribute("invalid", true);
+			RequestDispatcher req=request.getRequestDispatcher("/index.jsp");
     		req.include(request, response);
-			
 			
 		}
 		

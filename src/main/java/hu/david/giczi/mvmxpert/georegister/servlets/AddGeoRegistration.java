@@ -54,7 +54,7 @@ public class AddGeoRegistration extends HttpServlet {
 			request.setAttribute("msg", 0);
 		}
 
-		request.getRequestDispatcher("geoinput.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/geoinput.jsp").forward(request, response);
 	}
 
 	
