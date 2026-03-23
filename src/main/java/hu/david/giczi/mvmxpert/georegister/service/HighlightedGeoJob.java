@@ -59,7 +59,10 @@ public class HighlightedGeoJob {
 			}
 
 		}
-
+		if( highlightedGeoJobStore.contains(containerGeoJob) ) {
+			return;
+			
+		}
 		highlightedGeoJobStore.add(containerGeoJob);
 	}
 

@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hu.david.giczi.mvmxpert.georegister.service.TimeStamp;
 
 
 @WebServlet("/init")
@@ -26,11 +25,8 @@ public class Init extends HttpServlet {
 		
 	
 		if("david.giczi".equals(username) && "localhero".equals(password)) {
-			
-			request.setAttribute("years", TimeStamp.getYears(10));
 			request.setAttribute("msg", -1);
 			request.getRequestDispatcher("InitGeoJobProject").forward(request, response);
-			
 			
 		}
 		else if("".equals(username) && "".equals(password)) {

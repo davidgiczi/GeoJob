@@ -33,7 +33,7 @@ public class InitGeoList extends HttpServlet {
 			String year = (String) request.getSession().getAttribute("requestInstruction");
 			Boolean invalid = (Boolean) request.getSession().getAttribute("invalid");
 			
-			request.setAttribute("years", TimeStamp.getYears(5));
+			request.setAttribute("years", TimeStamp.getYears(10));
 			
 			if(isAllEmpty != null) {
 				
