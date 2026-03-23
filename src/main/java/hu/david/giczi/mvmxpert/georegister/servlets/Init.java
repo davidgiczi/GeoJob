@@ -27,7 +27,7 @@ public class Init extends HttpServlet {
 	
 		if("david.giczi".equals(username) && "localhero".equals(password)) {
 			
-			request.setAttribute("years", TimeStamp.getYears(5));
+			request.setAttribute("years", TimeStamp.getYears(10));
 			request.setAttribute("msg", -1);
 			request.getRequestDispatcher("InitGeoJobProject").forward(request, response);
 			
