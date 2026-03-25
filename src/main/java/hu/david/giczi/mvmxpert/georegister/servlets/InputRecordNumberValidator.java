@@ -91,7 +91,7 @@ public class InputRecordNumberValidator extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/geojobdel.jsp").forward(request, response);
 			break;
 		case "createcoord":
-			request.getRequestDispatcher("/WEB-INF/postRouter").forward(request, response);
+			request.getRequestDispatcher("postRouter").forward(request, response);
 			break;
 		default:
 			break;
